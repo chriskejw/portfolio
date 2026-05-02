@@ -1,8 +1,27 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #11100f;
+  --foreground: #f6efe8;
+  --page: #11100f;
+  --surface: #090d0d;
+  --chrome: #161819;
+  --address: #222426;
+  --card: #111514;
+  --footer: #111514;
+  --ink: #f6f1ea;
+  --muted: #c7beb4;
+  --line: rgba(246, 241, 234, 0.14);
+  --accent: #ff5b37;
+  --accent-strong: #ef4728;
+  --glow: rgba(255, 91, 55, 0.16);
+  --shape-one: rgba(109, 86, 67, 0.72);
+  --shape-two: rgba(43, 42, 38, 0.92);
+  --grid-line: rgba(246, 241, 234, 0.1);
+  --portrait-edge: #efe7dd;
+  --tag: #ffc3ad;
+  --tag-bg: rgba(255, 91, 55, 0.12);
+  --tag-line: rgba(255, 91, 55, 0.42);
 }
 
 @theme inline {
@@ -12,15 +31,134 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+::selection {
+  background: #ff8a65;
+  color: #18130f;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.font-editorial {
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.font-script {
+  font-family: "Brush Script MT", "Segoe Print", cursive;
+  font-weight: 500;
+}
+
+.paper-texture {
+  position: relative;
+  background:
+    radial-gradient(circle at 25% 12%, rgba(255, 91, 55, 0.08), transparent 28%),
+    radial-gradient(circle at 78% 24%, rgba(216, 181, 143, 0.14), transparent 30%),
+    linear-gradient(var(--surface), var(--surface));
+}
+
+.paper-texture::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 48px 0 0;
+  opacity: 0.28;
+  background-image:
+    linear-gradient(115deg, transparent 0 48%, rgba(255, 255, 255, 0.06) 49%, transparent 50%),
+    radial-gradient(circle, rgba(255, 255, 255, 0.14) 1px, transparent 1px);
+  background-size: 140px 140px, 9px 9px;
+  mix-blend-mode: overlay;
+}
+
+.nav-active {
+  color: var(--accent);
+  position: relative;
+}
+
+.nav-active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.5rem;
+  height: 2px;
+  background: var(--accent);
+  transform: rotate(-2deg);
+}
+
+.portrait-card {
+  clip-path: polygon(
+    8% 4%,
+    33% 0,
+    48% 5%,
+    69% 1%,
+    93% 10%,
+    88% 33%,
+    96% 56%,
+    87% 91%,
+    62% 96%,
+    44% 92%,
+    20% 98%,
+    3% 85%,
+    9% 62%,
+    1% 39%
+  );
+}
+
+.stamp {
+  transform: rotate(18deg);
+}
+
+.stamp::after {
+  content: "*";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.circled {
+  position: relative;
+  display: inline-block;
+}
+
+.circled::after {
+  content: "";
+  position: absolute;
+  inset: 0.08em -0.12em -0.02em;
+  border: 2px solid var(--accent);
+  border-radius: 999px;
+  transform: rotate(-8deg);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --background: #efe5d8;
+    --foreground: #111719;
+    --page: #efe5d8;
+    --surface: #fbf3e8;
+    --chrome: #ebe8e5;
+    --address: #f7f7f5;
+    --card: #fff8ee;
+    --footer: #f8ecdc;
+    --ink: #101719;
+    --muted: #3f4849;
+    --line: rgba(16, 23, 25, 0.14);
+    --glow: rgba(255, 91, 55, 0.14);
+    --shape-one: rgba(230, 185, 147, 0.8);
+    --shape-two: rgba(237, 222, 203, 0.95);
+    --grid-line: rgba(16, 23, 25, 0.08);
+    --portrait-edge: #fff8ee;
+    --tag: #b43d22;
+    --tag-bg: rgba(255, 91, 55, 0.1);
+    --tag-line: rgba(255, 91, 55, 0.34);
+  }
 }
