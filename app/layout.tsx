@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
+  // Expose fonts as CSS variables so Tailwind can reuse them globally.
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
