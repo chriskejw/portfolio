@@ -7,7 +7,7 @@ type Theme = "light" | "dark";
 const STORAGE_KEY = "portfolio-theme";
 const listeners = new Set<() => void>();
 
-// Starts in dark mode to match the server-rendered HTML.
+// Hydrates from the pre-paint script in layout.tsx.
 let currentTheme: Theme = "dark";
 
 function getSystemTheme(): Theme {
@@ -24,6 +24,11 @@ function getPreferredTheme(): Theme {
   }
 
   return getSystemTheme();
+}
+
+function hasSavedTheme() {
+  const savedTheme = window.localStorage.getItem(STORAGE_KEY);
+  return savedTheme === "light" || savedTheme === "dark";
 }
 
 function applyTheme(theme: Theme) {
@@ -54,8 +59,23 @@ function subscribe(listener: () => void) {
     window.setTimeout(listener, 0);
   }
 
+  const mediaQuery = window.matchMedia("(prefers-color-scheme: light)");
+  const handleSystemThemeChange = () => {
+    if (hasSavedTheme()) {
+      return;
+    }
+
+    const systemTheme = getSystemTheme();
+    currentTheme = systemTheme;
+    applyTheme(systemTheme);
+    emitChange();
+  };
+
+  mediaQuery.addEventListener("change", handleSystemThemeChange);
+
   return () => {
     listeners.delete(listener);
+    mediaQuery.removeEventListener("change", handleSystemThemeChange);
   };
 }
 
@@ -86,7 +106,7 @@ export function ThemeToggle() {
       aria-pressed={isLight}
       onClick={toggleTheme}
       title={isLight ? "Switch to dark mode" : "Switch to light mode"}
-      className="group absolute right-4 top-1/2 z-20 grid h-7 w-7 -translate-y-1/2 place-items-center rounded-md border border-[var(--accent)] bg-[var(--accent)] text-white shadow-[0_8px_18px_rgba(255,91,55,0.25)] transition hover:bg-[var(--accent-strong)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-2 focus:ring-offset-[var(--chrome)] sm:right-6"
+      className="group grid h-7 w-7 place-items-center rounded-md border border-[var(--accent)] bg-[var(--accent)] text-white shadow-[0_8px_18px_rgba(255,91,55,0.25)] transition hover:bg-[var(--accent-strong)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-2 focus:ring-offset-[var(--chrome)] sm:h-8 sm:w-8"
     >
       {isLight ? (
         <svg

@@ -1,4 +1,7 @@
 import Image from "next/image";
+import { CopyEmailButton } from "./copy-email-button";
+import { MobileMenu } from "./mobile-menu";
+import { ProjectsSection } from "./projects-section";
 import { ThemeToggle } from "./theme-toggle";
 
 const values = [
@@ -26,13 +29,16 @@ const values = [
 
 const projects = [
   {
-    title: "Personal Portfolio Website",
+    title: "Speedie 2026",
     status: "Completed",
     description:
-      "A modern, responsive personal portfolio built with Next.js and Tailwind CSS, deployed on GitHub Pages.",
-    tech: ["Next.js", "Tailwind CSS", "GitHub Pages", "Codex"],
-    tag: "Frontend",
-    tone: "from-[#2b241f] via-[#6b523f] to-[#d8b58f]",
+      "A browser game project published on GitHub Pages, built as a playful interactive web experience.",
+    tech: ["JavaScript", "HTML", "CSS", "GitHub Pages"],
+    tag: "Game",
+    tone: "from-[#13251f] via-[#1f6f5a] to-[#f5c85f]",
+    url: "https://chriskejw.github.io/speedie-2026/",
+    repoUrl: "https://github.com/chriskejw/speedie-2026",
+    action: "View project",
   },
   {
     title: "Risk Review Assistant",
@@ -42,6 +48,9 @@ const projects = [
     tech: ["Python", "OpenAI API", "Next.js"],
     tag: "Trust & Safety",
     tone: "from-[#151918] via-[#1f2b29] to-[#11100f]",
+    url: null,
+    repoUrl: null,
+    action: "View project",
   },
   {
     title: "AI Case Summary Tool",
@@ -51,6 +60,9 @@ const projects = [
     tech: ["OpenAI API", "Python", "Streamlit or Next.js"],
     tag: "AI Ops",
     tone: "from-[#f8efe3] via-[#efd6bc] to-[#d9a67c]",
+    url: null,
+    repoUrl: null,
+    action: "View project",
   },
   {
     title: "Raspberry Pi Dashboard",
@@ -60,11 +72,11 @@ const projects = [
     tech: ["Raspberry Pi", "Python", "Flask", "SQLite"],
     tag: "Systems",
     tone: "from-[#ffe0be] via-[#ffc08d] to-[#f36f4a]",
+    url: null,
+    repoUrl: null,
+    action: "View project",
   },
 ];
-
-// Keep project data ready while the Projects section remains intentionally hidden.
-void projects;
 
 const experience = [
   {
@@ -144,52 +156,49 @@ function ValueIcon({ type }: { type: string }) {
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[var(--page)] px-2.5 py-2.5 text-[var(--ink)] sm:px-5 sm:py-5">
+    <main className="min-h-screen bg-[var(--page)] px-0 py-2.5 text-[var(--ink)] sm:px-5 sm:py-5">
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_top_left,var(--glow),transparent_30%),linear-gradient(120deg,transparent,rgba(255,112,78,0.05),transparent)]" />
 
       <div className="relative mx-auto max-w-[1440px] overflow-hidden rounded-[1.1rem] border border-[var(--line)] bg-[var(--surface)] shadow-2xl shadow-black/20 sm:rounded-[1.6rem]">
-        <div className="relative flex h-12 items-center justify-between border-b border-[var(--line)] bg-[var(--chrome)] px-4 sm:px-6">
-          <div className="flex items-center gap-2">
+        <div className="grid h-12 grid-cols-[auto_1fr_auto] items-center gap-3 border-b border-[var(--line)] bg-[var(--chrome)] px-4 sm:gap-4 sm:px-6">
+          <div className="flex shrink-0 items-center gap-2">
             <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
             <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
             <span className="h-3 w-3 rounded-full bg-[#28c840]" />
           </div>
-          <div className="mx-auto hidden h-7 w-full max-w-xl items-center justify-center rounded-md border border-[var(--line)] bg-[var(--address)] text-xs font-medium text-[var(--muted)] sm:flex">
+          <div className="mx-auto hidden h-7 min-w-0 w-full max-w-xl items-center justify-center rounded-md border border-[var(--line)] bg-[var(--address)] px-3 text-xs font-medium text-[var(--muted)] sm:flex">
             chriske.com
           </div>
-          <ThemeToggle />
+          <div className="flex w-auto shrink-0 items-center justify-end gap-1.5 sm:gap-2">
+            <ThemeToggle />
+            <MobileMenu />
+          </div>
         </div>
 
         <div className="paper-texture">
-          <header className="flex flex-wrap items-center justify-between gap-y-4 px-5 py-5 sm:px-10 lg:flex-nowrap lg:px-14">
+          <header className="relative z-20 flex items-center justify-between gap-4 px-5 py-5 sm:px-10 lg:px-14">
             <a
               href="#top"
-              className="font-script text-4xl leading-none text-[var(--ink)]"
+              className="font-script min-w-0 whitespace-nowrap text-[clamp(1.4rem,6vw,2.25rem)] leading-none text-[var(--ink)] sm:text-4xl"
             >
-              Chris Ke.
+              Hey there! I&apos;m Chris.
             </a>
             <nav
               aria-label="Primary navigation"
               className="hidden items-center gap-8 text-sm font-semibold text-[var(--ink)] lg:flex"
             >
               <a
-                className="nav-active inline-flex min-h-11 shrink-0 items-center"
-                href="#top"
-              >
-                Home
-              </a>
-              <a
                 className="inline-flex min-h-11 shrink-0 items-center transition hover:text-[var(--accent)]"
                 href="#about"
               >
                 About
               </a>
-              {/* <a
+              <a
                 className="inline-flex min-h-11 shrink-0 items-center transition hover:text-[var(--accent)]"
                 href="#projects"
               >
-                Work
-              </a> */}
+                Projects
+              </a>
               <a
                 className="inline-flex min-h-11 shrink-0 items-center transition hover:text-[var(--accent)]"
                 href="#experience"
@@ -227,14 +236,14 @@ export default function Home() {
                 </span>
               </h1>
               <p className="mt-5 max-w-xl text-base leading-7 text-[var(--muted)] sm:mt-7 sm:text-lg">
-                I help companies protect customers, platforms, and business
-                growth by reducing risk and strengthening trust, safety, and
-                compliance.
+                I help companies protect customers and platforms by reducing risk, strengthening compliance, and building safer systems.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:mt-9 sm:flex-row sm:items-center sm:gap-4">
                 <a
                   href="https://www.linkedin.com/in/chriskejw"
-                  className="inline-flex h-12 w-full items-center justify-center rounded-lg bg-[var(--accent)] px-7 text-sm font-bold text-white shadow-[0_16px_36px_rgba(255,91,55,0.26)] transition hover:bg-[var(--accent-strong)] sm:w-auto"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex h-12 w-full max-w-full items-center justify-center rounded-lg bg-[var(--accent)] px-6 text-sm font-bold text-white shadow-[0_16px_36px_rgba(255,91,55,0.26)] transition hover:bg-[var(--accent-strong)] sm:w-auto sm:px-7"
                 >
                   View LinkedIn
                   <span className="ml-3 text-lg leading-none">-&gt;</span>
@@ -266,12 +275,12 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="hero-note absolute bottom-6 left-3 rotate-[-8deg] font-script text-xl leading-tight sm:bottom-16 sm:left-0 sm:text-3xl">
+              {/* <div className="hero-note absolute bottom-6 left-3 rotate-[-8deg] font-script text-xl leading-tight sm:bottom-16 sm:left-0 sm:text-3xl">
                 Thoughtful systems.
                 <br />
                 Trusted outcomes.
                 <span className="mt-1 block h-1 w-24 rounded-full bg-[var(--accent)]" />
-              </div>
+              </div> */}
               {/* <div className="stamp absolute bottom-14 right-0 hidden h-32 w-32 items-center justify-center rounded-full border-2 border-[var(--accent)] text-center text-[10px] font-black uppercase tracking-[0.24em] text-[var(--accent)] sm:flex">
                 Building
                 <br />
@@ -284,12 +293,12 @@ export default function Home() {
 
           <section
             id="about"
-            className="grid border-y border-[var(--line)] px-5 sm:grid-cols-2 sm:px-10 lg:grid-cols-4 lg:px-24"
+            className="grid justify-items-center border-y border-[var(--line)] px-5 sm:grid-cols-2 sm:justify-items-stretch sm:px-10 lg:grid-cols-4 lg:px-24"
           >
             {values.map((value) => (
               <article
                 key={value.title}
-                className="flex gap-5 border-b border-[var(--line)] py-6 sm:border-r sm:last:border-r-0 lg:border-b-0"
+                className="flex w-full max-w-[19rem] gap-5 border-b border-[var(--line)] py-6 sm:max-w-none sm:border-r sm:last:border-r-0 lg:border-b-0"
               >
                 <ValueIcon type={value.icon} />
                 <div>
@@ -302,72 +311,13 @@ export default function Home() {
             ))}
           </section>
 
-          {/* <section id="projects" className="px-5 py-9 sm:px-10 lg:px-24">
-            <div className="mb-5 flex items-end justify-between gap-6">
-              <h2 className="font-editorial text-3xl leading-none text-[var(--ink)] sm:text-4xl">
-                Selected Projects
-              </h2>
-              <a
-                href="#contact"
-                className="hidden text-sm font-semibold text-[var(--ink)] transition hover:text-[var(--accent)] sm:block"
-              >
-                View all projects -&gt;
-              </a>
-            </div>
-            <div className="mobile-measure grid min-w-0 gap-5 sm:w-auto md:grid-cols-2 xl:grid-cols-4">
-              {projects.map((project) => (
-                <article
-                  key={project.title}
-                  className="min-w-0 overflow-hidden rounded-xl border border-[var(--line)] bg-[var(--card)] shadow-sm"
-                >
-                  <div
-                    className={`relative h-40 shrink-0 bg-gradient-to-br ${project.tone}`}
-                  >
-                    <div className="absolute inset-5 rounded-lg border border-white/12 bg-black/10" />
-                    <div className="absolute left-6 top-7 max-w-[10rem] break-words font-editorial text-2xl leading-6 text-white">
-                      {project.title}
-                    </div>
-                    <div className="absolute bottom-5 right-5 h-16 w-16 rounded-full border border-white/30 bg-white/10" />
-                    <div className="absolute bottom-9 right-9 h-8 w-8 rounded-full bg-[var(--accent)]/80" />
-                  </div>
-                  <div className="flex min-w-0 flex-1 flex-col justify-between gap-5 p-4">
-                    <div className="min-w-0">
-                      <div className="flex flex-wrap items-center gap-2">
-                        <span className="rounded-md border border-[var(--tag-line)] bg-[var(--tag-bg)] px-2 py-1 text-[11px] font-bold uppercase tracking-[0.08em] text-[var(--tag)]">
-                          {project.tag}
-                        </span>
-                        <span className="rounded-md border border-[var(--line)] px-2 py-1 text-[11px] font-bold uppercase tracking-[0.08em] text-[var(--muted)]">
-                          {project.status}
-                        </span>
-                      </div>
-                      <h3 className="mt-3 font-bold text-[var(--ink)]">
-                        {project.title}
-                      </h3>
-                      <p className="mt-1 break-words text-sm leading-5 text-[var(--muted)]">
-                        {project.description}
-                      </p>
-                    </div>
-                    <div className="flex min-w-0 flex-wrap gap-2">
-                      {project.tech.map((item) => (
-                        <span
-                          key={`${project.title}-${item}`}
-                          className="rounded-md bg-[var(--address)] px-2 py-1 text-xs font-medium text-[var(--ink)]"
-                        >
-                          {item}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </section> */}
+          <ProjectsSection projects={projects} />
 
           <section
             id="experience"
-            className="grid gap-8 px-5 py-12 sm:px-10 lg:grid-cols-[12rem_1fr] lg:gap-12 lg:px-24 lg:py-16"
+            className="grid justify-items-center gap-8 px-5 py-12 sm:justify-items-stretch sm:px-10 lg:grid-cols-[12rem_1fr] lg:gap-12 lg:px-24 lg:py-16"
           >
-            <div>
+            <div className="flex flex-col items-center text-center sm:items-start sm:text-left">
               <h2 className="font-editorial text-3xl leading-none text-[var(--ink)] sm:text-4xl">
                 Experience
               </h2>
@@ -412,29 +362,34 @@ export default function Home() {
                   <span className="absolute left-20 top-12 h-20 w-24 rounded-full border-b-2 border-[var(--accent)]" />
                 </div>
               </div> */}
-              <div className="md:pr-4">
+              <div className="text-center md:pr-4 md:text-left">
                 <h2 className="font-editorial text-[clamp(2.25rem,10vw,3.25rem)] leading-tight text-[var(--ink)]">
                   Interested in working together?
                   <br />
                   I&apos;d <span className="circled">love</span> to connect.
                 </h2>
               </div>
-              <div className="space-y-5 border-t border-[var(--line)] pt-6 md:border-l md:border-t-0 md:pl-12 md:pt-0 lg:pl-16">
-                <p className="max-w-sm text-sm leading-6 text-[var(--muted)]">
+              <div className="space-y-5 border-t border-[var(--line)] pt-6 text-center md:border-l md:border-t-0 md:pl-12 md:pt-0 md:text-left lg:pl-16">
+                <p className="mx-auto max-w-sm text-sm leading-6 text-[var(--muted)] md:mx-0">
                   Whether you&apos;re exploring a role, a collaboration, or just
                   want to connect, I&apos;d be happy to hear from you.
                 </p>
-                <a
-                  href="mailto:chriskejw@gmail.com"
-                  className="inline-flex h-12 w-full items-center justify-center rounded-lg bg-[var(--accent)] px-5 text-sm font-bold text-white transition hover:bg-[var(--accent-strong)] sm:w-auto"
-                >
-                  Let&apos;s talk
-                  <span className="ml-3">-&gt;</span>
-                </a>
+                <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-5 md:justify-start">
+                  <a
+                    href="mailto:chriskejw@gmail.com"
+                    className="inline-flex h-12 w-full items-center justify-center rounded-lg bg-[var(--accent)] px-5 text-sm font-bold text-white transition hover:bg-[var(--accent-strong)] sm:w-auto"
+                  >
+                    Email me
+                    <span className="ml-3">-&gt;</span>
+                  </a>
+                  <CopyEmailButton />
+                </div>
                 <div className="space-y-2 text-sm text-[var(--ink)]">
-                  <p>chriskejw@gmail.com</p>
+                  <p className="font-mono text-[13px] text-[var(--muted)]">
+                    chriskejw@gmail.com
+                  </p>
                   <p>Based in Singapore</p>
-                  <p className="flex items-center gap-2">
+                  <p className="flex items-center justify-center gap-2 md:justify-start">
                     <span className="h-2.5 w-2.5 rounded-full bg-[#65c987]" />
                     Available
                   </p>
