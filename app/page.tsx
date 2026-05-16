@@ -226,8 +226,8 @@ export default function Home() {
             id="top"
             className="grid items-center gap-7 px-5 pb-8 pt-2 sm:gap-8 sm:px-10 sm:pb-9 sm:pt-6 md:grid-cols-[1fr_0.92fr] lg:px-24 lg:pb-6 lg:pt-10"
           >
-            <div className="relative z-10 w-full min-w-0">
-              <h1 className="font-editorial max-w-4xl text-[clamp(3rem,12vw,4.8rem)] font-semibold leading-[0.92] text-[var(--ink)] sm:text-[clamp(3.7rem,8vw,6.9rem)] sm:leading-[0.9] md:leading-[0.86]">
+            <div className="relative z-10 w-full min-w-0 text-center md:text-left">
+              <h1 className="font-editorial mx-auto max-w-4xl text-[clamp(3rem,12vw,4.8rem)] font-semibold leading-[0.92] text-[var(--ink)] sm:text-[clamp(3.7rem,8vw,6.9rem)] sm:leading-[0.9] md:mx-0 md:leading-[0.86]">
                 <span className="block md:inline">Reducing </span>
                 <span className="block italic text-[var(--accent)] md:inline">
                   risk,
@@ -237,7 +237,7 @@ export default function Home() {
                   trust.
                 </span>
               </h1>
-              <p className="mt-5 max-w-[23rem] text-base leading-7 text-[var(--muted)] sm:mt-7 sm:max-w-xl sm:text-lg">
+              <p className="mx-auto mt-5 max-w-[23rem] text-base leading-7 text-[var(--muted)] sm:mt-7 sm:max-w-xl sm:text-lg md:mx-0">
                 I help companies protect customers and platforms by reducing risk, strengthening compliance, and building safer systems.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:mt-9 sm:flex-row sm:items-center sm:gap-4">
@@ -245,7 +245,7 @@ export default function Home() {
                   href="https://www.linkedin.com/in/chriskejw"
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex h-12 w-full max-w-[23rem] items-center justify-center rounded-lg bg-[var(--accent)] px-6 text-sm font-bold text-white shadow-[0_16px_36px_rgba(255,91,55,0.26)] transition hover:bg-[var(--accent-strong)] sm:w-auto sm:px-7"
+                  className="mx-auto inline-flex h-12 w-full max-w-[23rem] items-center justify-center rounded-lg bg-[var(--accent)] px-6 text-sm font-bold text-white shadow-[0_16px_36px_rgba(255,91,55,0.26)] transition hover:bg-[var(--accent-strong)] sm:w-auto sm:px-7 md:mx-0"
                 >
                   View LinkedIn
                   <span className="ml-3 text-lg leading-none">-&gt;</span>
