@@ -108,6 +108,8 @@ const experience = [
   },
 ];
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 function ValueIcon({ type }: { type: string }) {
   const base = "relative h-11 w-11 shrink-0 text-[var(--ink)]";
 
@@ -222,20 +224,20 @@ export default function Home() {
 
           <section
             id="top"
-            className="grid items-center gap-7 px-5 pb-8 pt-5 sm:gap-8 sm:px-10 sm:pb-9 sm:pt-6 md:grid-cols-[1fr_0.92fr] lg:px-24 lg:pb-6 lg:pt-10"
+            className="grid items-center gap-7 px-5 pb-8 pt-2 sm:gap-8 sm:px-10 sm:pb-9 sm:pt-6 md:grid-cols-[1fr_0.92fr] lg:px-24 lg:pb-6 lg:pt-10"
           >
-            <div className="mobile-measure relative z-10 min-w-0">
-              <h1 className="font-editorial max-w-4xl text-[clamp(2.55rem,10.5vw,6.9rem)] font-semibold leading-[0.96] text-[var(--ink)] sm:leading-[0.9] md:leading-[0.86]">
-                <span className="block md:inline">Reducing</span>{" "}
+            <div className="relative z-10 w-full min-w-0">
+              <h1 className="font-editorial max-w-4xl text-[clamp(3rem,12vw,4.8rem)] font-semibold leading-[0.92] text-[var(--ink)] sm:text-[clamp(3.7rem,8vw,6.9rem)] sm:leading-[0.9] md:leading-[0.86]">
+                <span className="block md:inline">Reducing </span>
                 <span className="block italic text-[var(--accent)] md:inline">
                   risk,
                 </span>
                 <span className="block">protecting</span>
-                <span className="block">
-                  <span className="italic text-[var(--accent)]">trust</span>.
+                <span className="block italic text-[var(--accent)]">
+                  trust.
                 </span>
               </h1>
-              <p className="mt-5 max-w-xl text-base leading-7 text-[var(--muted)] sm:mt-7 sm:text-lg">
+              <p className="mt-5 max-w-[23rem] text-base leading-7 text-[var(--muted)] sm:mt-7 sm:max-w-xl sm:text-lg">
                 I help companies protect customers and platforms by reducing risk, strengthening compliance, and building safer systems.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:mt-9 sm:flex-row sm:items-center sm:gap-4">
@@ -243,7 +245,7 @@ export default function Home() {
                   href="https://www.linkedin.com/in/chriskejw"
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex h-12 w-full max-w-full items-center justify-center rounded-lg bg-[var(--accent)] px-6 text-sm font-bold text-white shadow-[0_16px_36px_rgba(255,91,55,0.26)] transition hover:bg-[var(--accent-strong)] sm:w-auto sm:px-7"
+                  className="inline-flex h-12 w-full max-w-[23rem] items-center justify-center rounded-lg bg-[var(--accent)] px-6 text-sm font-bold text-white shadow-[0_16px_36px_rgba(255,91,55,0.26)] transition hover:bg-[var(--accent-strong)] sm:w-auto sm:px-7"
                 >
                   View LinkedIn
                   <span className="ml-3 text-lg leading-none">-&gt;</span>
@@ -265,7 +267,7 @@ export default function Home() {
               <div className="absolute left-1/2 top-5 h-[20rem] w-[14.5rem] -translate-x-1/2 rotate-1 overflow-hidden rounded-full border border-white/10 bg-black/10 shadow-2xl shadow-black/25 sm:top-8 sm:h-[31rem] sm:w-[23rem] md:left-[54%]">
                 <div className="relative h-full w-full overflow-hidden">
                   <Image
-                    src="/portfolio/profile.jpg"
+                    src={`${basePath}/profile.jpg`}
                     alt="Chris profile photo"
                     fill
                     sizes="(min-width: 768px) 23rem, 14.5rem"

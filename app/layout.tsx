@@ -34,7 +34,7 @@ const themeScript = `
 export const metadata: Metadata = {
   title: "Chris | Risk Manager & AI Builder",
   description:
-    "Personal portfolio for Chris, a Risk Manager working across Trust & Safety, Compliance, and AI tooling.",
+    "Personal portfolio of Chris, with experience spanning Trust & Safety, Compliance, and AI tooling.",
 };
 
 export default function RootLayout({
