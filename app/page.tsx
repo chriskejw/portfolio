@@ -41,6 +41,18 @@ const projects = [
     action: "View project",
   },
   {
+    title: "CProReview",
+    status: "Completed",
+    description:
+      "A tech review site for gadget reviews, buying guides, videos, curated recommendations, and newsletter signups.",
+    tech: ["HTML", "CSS", "JavaScript", "Bootstrap", "GitHub Pages"],
+    tag: "Content Site",
+    tone: "from-[#0f172a] via-[#2563eb] to-[#22c55e]",
+    url: "https://cpro-review.com/",
+    repoUrl: "https://github.com/chriskejw/cpro-review.com",
+    action: "View project",
+  },
+  {
     title: "Risk Review Assistant",
     status: "Planned / Prototype",
     description:
